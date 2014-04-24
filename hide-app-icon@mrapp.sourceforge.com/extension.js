@@ -43,18 +43,12 @@
  */
 const Main = imports.ui.main;
 
-let iconBox;
-let previousIconBoxWidth;
-let previousIconBoxHeight;
-
 /**
  * The method, which is invoked, when the extension has been enabled.
  */
 function enable() {
     if (typeof Main.panel.statusArea.appMenu._iconBox != 'undefined') {
-        iconBox = Main.panel.statusArea.appMenu._iconBox;
-        previousIconBoxWidth = iconBox.get_width();
-        previousIconBoxHeight = iconBox.get_height();        
+        let iconBox = Main.panel.statusArea.appMenu._iconBox; 
         iconBox.set_width(0);
         iconBox.set_height(0);
         iconBox.hide();
@@ -65,9 +59,10 @@ function enable() {
  * The method, which is invoked, when the extension has been disabled.
  */
 function disable() {
-    if (iconBox) {
-	    iconBox.set_width(previousIconBoxWidth);
-        iconBox.set_height(previousIconBoxHeight);
+    if (typeof Main.panel.statusArea.appMenu._iconBox != 'undefined') {
+    	let iconBox = Main.panel.statusArea.appMenu._iconBox; 
+	    iconBox.set_width(-1);
+        iconBox.set_height(-1);
         iconBox.show();
     }
 }
