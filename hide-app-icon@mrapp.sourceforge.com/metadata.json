@@ -1,0 +1,10 @@
+{
+    "name": "Hide App Icon",
+    "description": "Hides the icon of the currently focused application in the top panel of the GNOME shell.",
+    "author": "Michael Rapp",
+    "url": "https://sourceforge.net/p/hide-app-icon",
+    "extension-id": "hide-app-icon",
+    "uuid": "hide-app-icon@mrapp.sourceforge.com",
+    "shell-version": [ "3.12" ],
+    "version": 1
+}
