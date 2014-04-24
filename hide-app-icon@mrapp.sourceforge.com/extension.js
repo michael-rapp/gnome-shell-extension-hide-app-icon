@@ -47,6 +47,9 @@ let iconBox;
 let previousIconBoxWidth;
 let previousIconBoxHeight;
 
+/**
+ * The method, which is invoked, when the extension has been enabled.
+ */
 function enable() {
     if (typeof Main.panel.statusArea.appMenu._iconBox != 'undefined') {
         iconBox = Main.panel.statusArea.appMenu._iconBox;
@@ -58,6 +61,9 @@ function enable() {
     }
 }
 
+/**
+ * The method, which is invoked, when the extension has been disabled.
+ */
 function disable() {
     if (iconBox) {
 	    iconBox.set_width(previousIconBoxWidth);
