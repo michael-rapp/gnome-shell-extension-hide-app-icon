@@ -5,6 +5,6 @@
     "url": "https://sourceforge.net/p/hide-app-icon",
     "extension-id": "hide-app-icon",
     "uuid": "hide-app-icon@mrapp.sourceforge.com",
-    "shell-version": [ "3.12" ],
+    "shell-version": [ "3.12", "3.14" ],
     "version": 2
 }
