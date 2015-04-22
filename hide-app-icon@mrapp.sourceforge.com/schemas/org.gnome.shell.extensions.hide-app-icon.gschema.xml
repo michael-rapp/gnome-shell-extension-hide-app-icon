@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<schemalist gettext-domain="gnome-shell-extensions">
+
+  <schema path="/org/gnome/shell/extensions/hide-app-icon/" id="org.gnome.shell.extensions.hide-app-icon">
+  
+    <key type="b" name="hide-app-icon">
+      <default>true</default>
+      <summary>Hide app icon</summary>
+      <description>Hides the icon of the currently focused app in the top panel of the GNOME shell.</description>
+    </key>
+    
+    <key type="b" name="hide-app-label">
+      <default>false</default>
+      <summary>Hide app label</summary>
+      <description>Hides the label of the currently focused app in the top panel of the GNOME shell.</description>
+    </key>
+    
+    <key type="b" name="hide-arrow">
+      <default>false</default>
+      <summary>Hide arrow</summary>
+      <description>Hides the arrow which belongs to the menu of the currently focused app in the top panel of the GNOME shell.</description>
+    </key>
+    
+  </schema>
+  
+</schemalist>
