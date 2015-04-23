@@ -45,7 +45,7 @@ const Main = imports.ui.main;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const Convenience = Extension.imports.convenience;
-const Preferences = Extension.imports.preferences;
+const Preferences = Extension.imports.prefs;
 
 /**
  * The method, which is invoked, when the extension has been enabled.
