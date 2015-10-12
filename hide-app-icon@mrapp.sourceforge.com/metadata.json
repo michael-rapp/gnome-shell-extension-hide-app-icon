@@ -8,5 +8,5 @@
     "settings-schema": "org.gnome.shell.extensions.hide-app-icon", 
     "uuid": "hide-app-icon@mrapp.sourceforge.com",
     "shell-version": [ "3.12", "3.14", "3.16", "3.18" ],
-    "version": 4
+    "version": 5
 }
