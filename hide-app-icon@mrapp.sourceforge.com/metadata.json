@@ -1,12 +1,12 @@
 {
     "name": "Hide App Icon",
-    "description": "Hides the icon and/or label of the currently focused application in the top panel of the GNOME shell.",
+    "description": "Hides the icon and/or title of the currently focused application in the top panel of the GNOME shell.",
     "author": "Michael Rapp",
-    "url": "https://sourceforge.net/p/hide-app-icon",
+    "url": "https://github.com/michael-rapp/gnome-shell-extension-hide-app-icon",
     "extension-id": "hide-app-icon",
     "gettext-domain": "gnome-shell-extensions", 
     "settings-schema": "org.gnome.shell.extensions.hide-app-icon", 
-    "uuid": "hide-app-icon@mrapp.sourceforge.com",
-    "shell-version": [ "3.12", "3.14", "3.16", "3.18" ],
-    "version": 6
+    "uuid": "hide-app-icon@michael-rapp.github.com",
+    "shell-version": [ "3.12", "3.14", "3.16", "3.18", "3.20", "3.22" ],
+    "version": 7
 }
