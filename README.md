@@ -12,7 +12,7 @@ Alternatively it is possible to download the latest release as a zip archive at 
 
 ```
   $ unzip gnome-shell-extension-title-to-panel-v.*.zip 
-  $ cd hide-app-icon@michael-rapp.github.com
+  $ cd hide-app-icon@mrapp.sourceforge.com
   $ make install
 ```
 

@@ -1,5 +1,5 @@
 #=============================================================================
-UUID=hide-app-icon@michael-rapp.github.com
+UUID=hide-app-icon@mrapp.sourceforge.com
 FILES=metadata.json *.js
 EXTENSIONS_DIR=~/.local/share/gnome-shell/extensions
 #=============================================================================
