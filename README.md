@@ -11,12 +11,12 @@ This extension is available at the GNOME's official extensions website at https:
 Alternatively it is possible to download the latest release as a zip archive at https://github.com/michael-rapp/gnome-shell-extension-hide-app-icon/releases. Once downloaded, the extension can be installed by executing the following commands in a terminal:
 
 ```
-  $ unzip gnome-shell-extension-title-to-panel-v.2.3.zip 
-  $ cd gnome-shell-extension-hide-app-icon
-  $ ./INSTALL.sh
-``` 
+  $ unzip gnome-shell-extension-title-to-panel-v.*.zip 
+  $ cd hide-app-icon@michael-rapp.github.com
+  $ make install
+```
 
-The bash script INSTALL.sh automatically copiels all relevant files into the directory `~/.local/share/gnome-shell/extensions`. If a prior version of the extension is already installed it is replaced.
+Executing the makefile automatically copies all relevant files into the directory `~/.local/share/gnome-shell/extensions`. If a prior version of the extension is already installed it is replaced.
 
 In order to enable the extension an application such like "Gnome Tweak Tool" may be used.
 
