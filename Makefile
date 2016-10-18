@@ -1,6 +1,6 @@
 #=============================================================================
 UUID=hide-app-icon@mrapp.sourceforge.com
-FILES=metadata.json *.js
+FILES=metadata.json *.js schemas
 EXTENSIONS_DIR=~/.local/share/gnome-shell/extensions
 #=============================================================================
 default_target: install
