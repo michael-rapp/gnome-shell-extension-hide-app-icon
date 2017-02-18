@@ -17,11 +17,13 @@ const _N = function(x) { return x; }
 const HIDE_ICON = 'hide-app-icon';
 const HIDE_LABEL = 'hide-app-label';
 const HIDE_ARROW = 'hide-arrow';
+const PADDING = 'padding';
 
 // Labels
 const HIDE_ICON_LABEL = _N("Hide app icon");
 const HIDE_LABEL_LABEL = _N("Hide app label");
 const HIDE_ARROW_LABEL = _N("Hide arrow");
+const PADDING_LABEL = _N("Horizontal padding");
 
 function init() {
     Convenience.initTranslations();
@@ -40,24 +42,33 @@ SettingsWidget.prototype = {
 	    
 	    // Labels
         this._grid.attach(new Gtk.Label({ label: _(HIDE_ICON_LABEL), wrap: true, xalign: 0.0 }), 0, 0, 1, 1);
-        this._grid.attach(new Gtk.Label({ label: _(HIDE_LABEL_LABEL), wrap: true, xalign: 0.0 }), 0, 2, 3, 1);
-        this._grid.attach(new Gtk.Label({ label: _(HIDE_ARROW_LABEL), wrap: true, xalign: 0.0 }), 0, 4, 3, 1);
+        this._grid.attach(new Gtk.Label({ label: _(HIDE_LABEL_LABEL), wrap: true, xalign: 0.0 }), 0, 1, 1, 1);
+        this._grid.attach(new Gtk.Label({ label: _(HIDE_ARROW_LABEL), wrap: true, xalign: 0.0 }), 0, 2, 1, 1);
+        this._grid.attach(new Gtk.Label({ label: _(PADDING_LABEL), wrap: true, xalign: 0.0 }), 0, 3, 1, 1);
        
         // Hide app icon switch
-        this._hideAppIcon = new Gtk.Switch({active: this._settings.get_boolean(HIDE_ICON)});
-        this._grid.attach(this._hideAppIcon, 4, 0, 1, 1);
-        this._hideAppIcon.connect('notify::active', Lang.bind(this, this._setHideAppIcon));
+        this._hideAppIconSwitch = new Gtk.Switch({active: this._settings.get_boolean(HIDE_ICON)});
+        this._hideAppIconSwitch.set_active(this._settings.get_boolean(HIDE_ICON));
+        this._grid.attach(this._hideAppIconSwitch, 1, 0, 1, 1);
+        this._hideAppIconSwitch.connect('notify::active', Lang.bind(this, this._setHideAppIcon));
         
         // Hide app label switch
-        this._hideAppLabel = new Gtk.Switch({active: this._settings.get_boolean(HIDE_LABEL)});
-        this._grid.attach(this._hideAppLabel, 4, 2, 1, 1);
-        this._hideAppLabel.connect('notify::active', Lang.bind(this, this._setHideAppLabel));
+        this._hideAppLabelSwitch = new Gtk.Switch({active: this._settings.get_boolean(HIDE_LABEL)});
+        this._hideAppLabelSwitch.set_active(this._settings.get_boolean(HIDE_LABEL));
+        this._grid.attach(this._hideAppLabelSwitch, 1, 1, 1, 1);
+        this._hideAppLabelSwitch.connect('notify::active', Lang.bind(this, this._setHideAppLabel));
 
         // Hide arrow switch
-        this._hideArrow = new Gtk.Switch({active: this._settings.get_boolean(HIDE_ARROW)});
-        this._grid.attach(this._hideArrow, 4, 4, 1, 1);
-        this._hideArrow.connect('notify::active', Lang.bind(this, this._setHideArrow));
-
+        this._hideArrowSwitch = new Gtk.Switch({active: this._settings.get_boolean(HIDE_ARROW)});
+        this._hideArrowSwitch.set_active(this._settings.get_boolean(HIDE_ARROW));
+        this._grid.attach(this._hideArrowSwitch, 1, 2, 1, 1);
+        this._hideArrowSwitch.connect('notify::active', Lang.bind(this, this._setHideArrow));
+        
+        // Padding spinner
+        this._paddingSpinner = Gtk.SpinButton.new_with_range(0, 64, 1);
+        this._paddingSpinner.set_value(this._settings.get_int(PADDING));
+        this._paddingSpinner.connect('value-changed', Lang.bind(this, this._setPadding));
+        this._grid.attach(this._paddingSpinner, 1, 3, 1, 1);
     },   
 
     _setHideAppIcon: function(object) {
@@ -70,6 +81,10 @@ SettingsWidget.prototype = {
     
     _setHideArrow: function(object) {
         this._settings.set_boolean(HIDE_ARROW, object.active);
+    },
+    
+    _setPadding: function() {
+        this._settings.set_int(PADDING, this._paddingSpinner.get_value());
     },
 
     _completePrefsWidget: function() {

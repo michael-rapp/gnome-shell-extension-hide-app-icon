@@ -41,6 +41,10 @@ function registerSettingChanges(settings) {
     settings.connect('changed::hide-arrow', Lang.bind(this, function() {
         onEnabled(settings);
     })); 
+    
+    settings.connect('changed::padding', Lang.bind(this, function() {
+        onEnabled(settings);
+    }));
 }
 
 /**
@@ -59,6 +63,10 @@ function unregisterSettingChanges(settings) {
     settings.connect('changed::hide-arrow', Lang.bind(this, function() {
         onDisabled();
     }));
+    
+    settings.connect('changed::padding', Lang.bind(this, function() {
+        onDisabled();
+    }));
 }
 
 /**
@@ -70,6 +78,7 @@ function onEnabled(settings) {
     hideIcon(settings.get_boolean(Preferences.HIDE_ICON));
     hideLabel(settings.get_boolean(Preferences.HIDE_LABEL));
     hideArrow(settings.get_boolean(Preferences.HIDE_ARROW));
+    setPadding(settings.get_int(Preferences.PADDING));
 }
 
 /**
@@ -79,6 +88,7 @@ function onDisabled() {
     hideIcon(false);
     hideLabel(false);
     hideArrow(false);
+    setPadding(0);
 }
 
 /**
@@ -89,7 +99,7 @@ function onDisabled() {
  */
 function hideIcon(hide) {
     if (typeof Main.panel.statusArea.appMenu._iconBox != 'undefined') {
-        let iconBox = Main.panel.statusArea.appMenu._iconBox; 
+        iconBox = Main.panel.statusArea.appMenu._iconBox; 
         hideElement(iconBox, hide);
     }   
 }
@@ -102,10 +112,10 @@ function hideIcon(hide) {
  */
 function hideLabel(hide) {
     if (typeof Main.panel.statusArea.appMenu._label != 'undefined') {
-        let label = Main.panel.statusArea.appMenu._label;
+        label = Main.panel.statusArea.appMenu._label;
 
-    // Special handling for shell version 3.12 and 3.14
-    if (label.toString().contains('TextShadower')) {
+        // Special handling for shell version 3.12 and 3.14
+        if (label.toString().contains('TextShadower')) {
             label = label._label;
         }
 
@@ -121,7 +131,7 @@ function hideLabel(hide) {
  */
 function hideArrow(hide) {
     if (typeof Main.panel.statusArea.appMenu._arrow != 'undefined') {
-        let arrow = Main.panel.statusArea.appMenu._arrow;
+        arrow = Main.panel.statusArea.appMenu._arrow;
         hideElement(arrow, hide);
     }   
 }
@@ -144,4 +154,23 @@ function hideElement(element, hide) {
         element.set_height(-1);
         element.show();
     }
+}
+
+/**
+ * Sets the horizontal padding of the app menu in the top panel of the GNOME shell.
+ * 
+ * @param hide The padding, which should be set in pixels
+ */
+function setPadding(padding) {
+    if (typeof Main.panel.statusArea.appMenu._container != 'undefined') {
+        container = Main.panel.statusArea.appMenu._container;
+        
+        if (padding == -1) {
+            style = null;
+        } else {
+            style = 'padding-left: %dpx; padding-right: %dpx'.format(padding, padding);        
+        }
+        
+        container.set_style(style);
+    }   
 }
