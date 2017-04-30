@@ -1,5 +1,7 @@
 # GNOME Shell Extension - Hide App Icon
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](http://www.gnu.org/licenses/gpl-3.0) [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=X75YSLEJV3DWE)
+
 The GNOME Shell Extension "Hide App Icon" allows to hide the icon and/or title of the currently focused application in the top panel of the GNOME shell.
 
 ![](SCREENSHOT.png)
