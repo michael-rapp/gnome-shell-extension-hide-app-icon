@@ -1,16 +1,10 @@
-const GdkPixbuf = imports.gi.GdkPixbuf;
-const Gdk = imports.gi.Gdk;
-const Gio = imports.gi.Gio;
-const GLib = imports.gi.GLib;
-const GObject = imports.gi.GObject;
 const Gtk = imports.gi.Gtk;
 const Lang = imports.lang;
-const Gettext = imports.gettext.domain('gnome-shell-extensions');
+const Gettext = imports.gettext.domain('hide-app-icon');
 const _ = Gettext.gettext;
 const ExtensionUtils = imports.misc.extensionUtils;
 const Extension = ExtensionUtils.getCurrentExtension();
 const Convenience = Extension.imports.convenience;
-const _N = function(x) { return x; }
 
 // Settings
 const HIDE_ICON = 'hide-app-icon';
@@ -18,14 +12,8 @@ const HIDE_LABEL = 'hide-app-label';
 const HIDE_ARROW = 'hide-arrow';
 const PADDING = 'padding';
 
-// Labels
-const HIDE_ICON_LABEL = _N("Hide app icon");
-const HIDE_LABEL_LABEL = _N("Hide app label");
-const HIDE_ARROW_LABEL = _N("Hide arrow");
-const PADDING_LABEL = _N("Horizontal padding");
-
 function init() {
-    Convenience.initTranslations();
+    Convenience.initTranslations("hide-app-icon");
 }
 
 function SettingsWidget() {
@@ -40,10 +28,10 @@ SettingsWidget.prototype = {
 	    this._settings = Convenience.getSettings();
 	    
 	    // Labels
-        this._grid.attach(new Gtk.Label({ label: _(HIDE_ICON_LABEL), wrap: true, xalign: 0.0 }), 0, 0, 1, 1);
-        this._grid.attach(new Gtk.Label({ label: _(HIDE_LABEL_LABEL), wrap: true, xalign: 0.0 }), 0, 1, 1, 1);
-        this._grid.attach(new Gtk.Label({ label: _(HIDE_ARROW_LABEL), wrap: true, xalign: 0.0 }), 0, 2, 1, 1);
-        this._grid.attach(new Gtk.Label({ label: _(PADDING_LABEL), wrap: true, xalign: 0.0 }), 0, 3, 1, 1);
+        this._grid.attach(new Gtk.Label({ label: _("Hide app icon"), wrap: true, xalign: 0.0 }), 0, 0, 1, 1);
+        this._grid.attach(new Gtk.Label({ label: _("Hide app label"), wrap: true, xalign: 0.0 }), 0, 1, 1, 1);
+        this._grid.attach(new Gtk.Label({ label: _("Hide arrow"), wrap: true, xalign: 0.0 }), 0, 2, 1, 1);
+        this._grid.attach(new Gtk.Label({ label: _("Horizontal padding"), wrap: true, xalign: 0.0 }), 0, 3, 1, 1);
        
         // Hide app icon switch
         this._hideAppIconSwitch = new Gtk.Switch({active: this._settings.get_boolean(HIDE_ICON)});
