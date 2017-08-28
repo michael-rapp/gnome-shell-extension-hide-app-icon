@@ -26,5 +26,5 @@ msgstr ""
 msgid "Hide arrow"
 msgstr ""
 
-msgid "Horizontal paddng"
+msgid "Horizontal padding"
 msgstr ""

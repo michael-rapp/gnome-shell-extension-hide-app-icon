@@ -27,5 +27,5 @@ msgstr "Nascondi il titolo dell'applicazione"
 msgid "Hide arrow"
 msgstr "Nascondi freccia"
 
-msgid "Horizontal paddng"
+msgid "Horizontal padding"
 msgstr "Spaziatura orizzontale"
