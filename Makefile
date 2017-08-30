@@ -1,24 +1,33 @@
-#=============================================================================
+#===================================================================================================
 UUID=hide-app-icon@mrapp.sourceforge.com
-SOURCES=metadata.json *.js schemas locale
 EXTENSIONS_DIR=~/.local/share/gnome-shell/extensions
-#=============================================================================
-default_target: install
-.PHONY: install uninstall zip
+#===================================================================================================
+default_target: compile
+.PHONY: clean install uninstall
 
-clean: 
-	(rm -f $(UUID)/schemas/gschemas.compiled; \
-		rm -rf $(UUID)/locale/*/)
-
-# Installs the extension
-install: uninstall
-	cp -r $(UUID) $(EXTENSIONS_DIR);
+# Deletes all generated files
+clean:
+	rm -f $(UUID).zip
+	rm -f $(UUID)/schemas/gschemas.compiled; \
+	rm -rf $(UUID)/locale/*/
 
 # Uninstalls the extension
 uninstall:
 	rm -rf $(EXTENSIONS_DIR)/$(UUID);
 
+# Creates all generated files
+compile: clean
+	glib-compile-schemas $(UUID)/schemas; \
+	for file in $(UUID)/locale/*.po; do \
+		dir=$(UUID)/locale/$$(basename $${file%.*})/LC_MESSAGES; \
+		mkdir -p $$dir; \
+		msgfmt $$file -o $$dir/hide-app-icon.mo; \
+	done
+	
 # Packages the extension as a zip archive as required by extensions.gnome.org
-zip:
-	(cd $(UUID); \
-		zip -rq ../$(UUID).zip $(SOURCES))
+zip: compile
+	zip -rq $(UUID).zip $(UUID)/metadata.json $(UUID)/*.js $(UUID)/schemas/gschemas.compiled $(UUID)/locale/*/;
+
+# Installs the extension
+install: uninstall zip
+	unzip -o $(UUID).zip -d $(EXTENSIONS_DIR);
