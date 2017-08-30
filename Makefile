@@ -1,10 +1,14 @@
 #=============================================================================
 UUID=hide-app-icon@mrapp.sourceforge.com
-FILES=metadata.json *.js schemas locale
+SOURCES=metadata.json *.js schemas locale
 EXTENSIONS_DIR=~/.local/share/gnome-shell/extensions
 #=============================================================================
 default_target: install
 .PHONY: install uninstall zip
+
+clean: 
+	(rm -f $(UUID)/schemas/gschemas.compiled; \
+		rm -rf $(UUID)/locale/*/)
 
 # Installs the extension
 install: uninstall
@@ -17,4 +21,4 @@ uninstall:
 # Packages the extension as a zip archive as required by extensions.gnome.org
 zip:
 	(cd $(UUID); \
-		zip -rq ../$(UUID).zip $(FILES))
+		zip -rq ../$(UUID).zip $(SOURCES))
