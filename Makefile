@@ -26,7 +26,7 @@ compile: clean
 	
 # Packages the extension as a zip archive as required by extensions.gnome.org
 zip: compile
-	zip -rq $(UUID).zip $(UUID)/metadata.json $(UUID)/*.js $(UUID)/schemas/gschemas.compiled $(UUID)/locale/*/;
+	(cd $(UUID) && zip -rq ../$(UUID).zip metadata.json *.js schemas/gschemas.compiled locale/*/);
 
 # Installs the extension
 install: uninstall zip
