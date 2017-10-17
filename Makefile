@@ -30,4 +30,4 @@ zip: compile
 
 # Installs the extension
 install: uninstall zip
-	unzip -o $(UUID).zip -d $(EXTENSIONS_DIR);
+	unzip -o $(UUID).zip -d $(EXTENSIONS_DIR)/$(UUID);
