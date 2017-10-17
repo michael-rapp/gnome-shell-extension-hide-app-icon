@@ -101,7 +101,7 @@ function hideIcon(hide) {
     if (typeof Main.panel.statusArea.appMenu._iconBox != 'undefined') {
         iconBox = Main.panel.statusArea.appMenu._iconBox; 
         hideElement(iconBox, hide);
-    }   
+    }
 }
 
 /**
@@ -114,13 +114,17 @@ function hideLabel(hide) {
     if (typeof Main.panel.statusArea.appMenu._label != 'undefined') {
         label = Main.panel.statusArea.appMenu._label;
 
-        // Special handling for shell version 3.12 and 3.14
-        if (label.toString().contains('TextShadower')) {
-            label = label._label;
+        try {
+            // Special handling for shell version 3.12 and 3.14
+            if (label.toString().contains('TextShadower')) {
+                label = label._label;
+            }
+        } catch (e) {
+            // Occurs since shell version 3.26
         }
 
         hideElement(label, hide);
-    }   
+    }
 }
 
 /**
@@ -133,7 +137,7 @@ function hideArrow(hide) {
     if (typeof Main.panel.statusArea.appMenu._arrow != 'undefined') {
         arrow = Main.panel.statusArea.appMenu._arrow;
         hideElement(arrow, hide);
-    }   
+    }
 }
 
 /**
@@ -172,5 +176,5 @@ function setPadding(padding) {
         }
         
         container.set_style(style);
-    }   
+    }
 }
