@@ -7,6 +7,6 @@
     "gettext-domain": "hide-app-icon",
     "settings-schema": "org.gnome.shell.extensions.hide-app-icon",
     "uuid": "hide-app-icon@mrapp.sourceforge.com",
-    "shell-version": [ "3.12", "3.14", "3.16", "3.18", "3.20", "3.22", "3.24", "2.26" ],
+    "shell-version": [ "3.12", "3.14", "3.16", "3.18", "3.20", "3.22", "3.24", "3.26" ],
     "version": 14
 }
